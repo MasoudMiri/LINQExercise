@@ -1,0 +1,107 @@
+﻿/* ============================================================
+   LINQ Exercise - Styles
+   ============================================================ */
+
+/* ----- لیست محصولات ----- */
+.product-card {
+    border:1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+    .product-table th,
+    .product-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .product-table th {
+        background: #007bff;
+        color: white;
+    }
+
+/* ----- سوالات ----- */
+.question-box {
+    background: #f0f4ff;
+    border-right: 4px solid #007bff;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ----- دکمه پاسخ ----- */
+.btn-answer {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .btn-answer:hover {
+        background: #0056b3;
+    }
+
+/* ----- مدال ----- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+    .modal-overlay.active {
+        display: flex;
+    }
+
+.modal-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #333;
+}
+
+    .modal-close:hover {
+        color: red;
+    }
+
+.modal-title {
+    color: #007bff;
+    margin-bottom: 15px;
+}

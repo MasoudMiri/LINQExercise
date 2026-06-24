@@ -1,0 +1,80 @@
+﻿@model dynamic
+
+<h3 class="modal-title">@Model.Title</h3>
+
+@try
+{
+    // چک میکنیم که آیا داده به صورت گروه‌بندی شده هست یا نه
+    var isGrouped = Model.Data is IEnumerable<dynamic> && Model.Data.GetType().GetGenericArguments().Length > 0;
+
+    @if (Model.Data is IEnumerable<dynamic> items && items.Any())
+    {
+        var firstItem = items.First();
+        var isGroup = firstItem.GetType().GetProperty("Category") != null &&
+                      firstItem.GetType().GetProperty("Products") != null;
+
+        @if (isGroup)
+        {
+            // نمایش گروه‌بندی شده
+            @foreach (var group in items)
+            {
+                var categoryName = group.Category;
+                var products = group.Products as IEnumerable<dynamic>;
+
+                <h4 style="color: #007bff; margin-top: 20px;">📁 @categoryName</h4>
+                <table class="product-table">
+                    <tr>
+                        <th>شناسه</th>
+                        <th>نام</th>
+                        <th>قیمت</th>
+                    </tr>
+                    @foreach (var product in products)
+                    {
+                        <tr>
+                            <td>@product.Id</td>
+                            <td>@product.Name</td>
+                            <td>@product.Price</td>
+                        </tr>
+                    }
+                </table>
+            }
+        }
+        else
+        {
+            // نمایش عادی (لیست محصولات)
+            <table class="product-table">
+                <tr>
+                    <th>شناسه</th>
+                    <th>نام</th>
+                    <th>دسته</th>
+                    <th>قیمت</th>
+                </tr>
+                @foreach (var item in items)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Category</td>
+                        <td>@item.Price</td>
+                    </tr>
+                }
+            </table>
+        }
+    }
+    else
+    {
+        // نمایش داده‌های ساده (مثل TotalPrice, AveragePrice)
+        <div style="padding: 20px; background: #e8f5e9; border-radius: 8px;">
+            @foreach (var prop in Model.Data.GetType().GetProperties())
+            {
+                <p><strong>@prop.Name:</strong> @prop.GetValue(Model.Data)</p>
+            }
+        </div>
+    }
+}
+catch
+{
+    <div style="padding: 20px; background: #fff3cd; border-radius: 8px;">
+        <p>داده‌ها به درستی دریافت نشدند. لطفاً دوباره تلاش کنید.</p>
+    </div>
+}

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<LINQExercise.Models.Product>
+@{
+    ViewData["Title"] = "LINQ Exercises";
+}
+
+
+
+<div class="container mt-4">
+    <h1 class="text-center" style="color: #007bff;">📊 LINQ Exercises</h1>
+    <p class="text-center text-muted">لیست محصولات و کوئری‌های LINQ</p>
+
+    <!-- ====== لیست محصولات ====== -->
+    <div class="product-card">
+        <h3>📦 لیست محصولات</h3>
+        <table class="product-table">
+            <tr>
+                <th>شناسه</th>
+                <th>نام</th>
+                <th>دسته</th>
+                <th>قیمت</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@((int)item.Category)</td>
+                    <td>@item.Price</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <hr />
+
+    <!-- ====== سوالات ====== -->
+    <h3>📝 کوئری‌های LINQ</h3>
+
+    <!-- سوال ۱ -->
+    <div class="question-box">
+        <span><strong>۱.</strong> محصولات دسته Category1 را نمایش بده.</span>
+        <button class="btn-answer" onclick="openModal('@Url.Action("GetByCategory", "Product")')">نمایش پاسخ</button>
+    </div>
+
+    <!-- سوال ۲ -->
+    <div class="question-box">
+        <span><strong>۲.</strong> محصول با بالاترین قیمت را پیدا کن.</span>
+        <button class="btn-answer" onclick="openModal('@Url.Action("GetMostExpensive", "Product")')">نمایش پاسخ</button>
+    </div>
+
+    <!-- سوال ۳ -->
+    <div class="question-box">
+        <span><strong>۳.</strong> مجموع قیمت تمامی محصولات را محاسبه کن.</span>
+        <button class="btn-answer" onclick="openModal('@Url.Action("GetTotalPrice", "Product")')">نمایش پاسخ</button>
+    </div>
+
+    <!-- سوال ۴ -->
+    <div class="question-box">
+        <span><strong>۴.</strong> محصولات را بر اساس دسته‌بندی گروه‌بندی کن.</span>
+        <button class="btn-answer" onclick="openModal('@Url.Action("GetGroupedByCategory", "Product")')">نمایش پاسخ</button>
+    </div>
+
+    <!-- سوال ۵ -->
+    <div class="question-box">
+        <span><strong>۵.</strong> میانگین قیمت محصولات را پیدا کن.</span>
+        <button class="btn-answer" onclick="openModal('@Url.Action("GetAveragePrice", "Product")')">نمایش پاسخ</button>
+    </div>
+</div>
+
+<!-- ====== مدال ====== -->
+<div id="modal" class="modal-overlay" onclick="closeModalOnOutside(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div id="modal-content">
+            <p class="text-muted">در حال بارگذاری...</p>
+        </div>
+    </div>
+</div>
+
+<!-- ====== جاوااسکریپت ساده ====== -->
+<script>
+    function openModal(url) {
+        fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('modal-content').innerHTML = html;
+                document.getElementById('modal').classList.add('active');
+            });
+    }
+
+    function closeModal() {
+        document.getElementById('modal').classList.remove('active');
+    }
+
+    function closeModalOnOutside(event) {
+        if (event.target === document.getElementById('modal')) {
+            closeModal();
+        }
+    }
+</script>
