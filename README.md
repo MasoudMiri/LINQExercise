@@ -8,7 +8,7 @@ A simple ASP.NET Core MVC project created for practicing LINQ queries using Repo
 
 This project demonstrates how to use LINQ in a layered ASP.NET Core MVC application.
 
-Product data is stored statically in the `ProductRepository`, and all LINQ queries are implemented inside the `ProductService` layer.
+Product data is stored statically in the `ProductRepository`.
 
 ---
 
