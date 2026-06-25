@@ -242,3 +242,7 @@ https://localhost:xxxx/Product/Index
 ## ⭐ Support
 
 If you found this project useful, please consider giving it a star on GitHub.
+
+## Documentation
+
+- [LINQ Queries Explanation](./LINQ-Queries-Explanation.md)
