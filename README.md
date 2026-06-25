@@ -112,9 +112,10 @@ new Product
 ### 1️⃣ Get Products By Category
 
 ```csharp
-_repository
-    .GetAll()
-    .Where(p => p.Category == Categories.Category1);
+## 1️⃣ Get Products By Category
+
+```csharp
+_products.Where(p => p.Category == category);
 ```
 
 ### 2️⃣ Get Most Expensive Product
