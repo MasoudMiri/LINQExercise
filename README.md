@@ -31,21 +31,30 @@ LINQExercise
 ├── Controllers
 │   └── ProductController.cs
 │
+├── Data
+│   ├── IProductRepository.cs
+│   └── ProductRepository.cs
+│
 ├── Models
 │   ├── Product.cs
 │   └── Categories.cs
 │
-├── Repositories
-│   └── ProductRepository.cs
-│
 ├── Services
+│   ├── IProductService.cs
 │   └── ProductService.cs
 │
 ├── Views
 │   └── Product
-│       └── Index.cshtml
+│       ├── Index.cshtml
+│       └── _AnswerModal.cshtml
 │
-└── Program.cs
+├── Program.cs
+├── appsettings.json
+│
+├── Views
+│   ├── Shared
+│   ├── _ViewImports.cshtml
+│   └── _ViewStart.cshtml
 ```
 
 ---
