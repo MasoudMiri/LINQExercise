@@ -44,17 +44,19 @@ LINQExercise
 │   └── ProductService.cs
 │
 ├── Views
-│   └── Product
-│       ├── Index.cshtml
-│       └── _AnswerModal.cshtml
-│
-├── Program.cs
-├── appsettings.json
-│
-├── Views
+│   ├── Product
+│   │   ├── Index.cshtml
+│   │   └── _AnswerModal.cshtml
+│   │
 │   ├── Shared
+│   │   ├── _Layout.cshtml
+│   │   └── _ValidationScriptsPartial.cshtml
+│   │
 │   ├── _ViewImports.cshtml
 │   └── _ViewStart.cshtml
+│
+├── Program.cs
+└── appsettings.json
 ```
 
 ---
