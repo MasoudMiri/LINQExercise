@@ -110,9 +110,25 @@ new Product
 ## 🎯 Implemented LINQ Queries
 
 ### 1️⃣ Get Products By Category
+### Service
 
 ```csharp
-## 1️⃣ Get Products By Category
+public IEnumerable<Product> GetProductsByCategory(Categories category)
+{
+    return _repository.GetByCategory(category);
+}
+```
+
+### Repository
+
+```csharp
+public IEnumerable<Product> GetByCategory(Categories category)
+{
+    return _products.Where(p => p.Category == category);
+}
+```
+
+### LINQ Query
 
 ```csharp
 _products.Where(p => p.Category == category);
